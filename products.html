@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>International Business Experts LLC | Our Products</title>
+    <script src="assets/js/tailwindcss.js"></script>
+    <link rel="stylesheet" href="assets/css/all.min.css">
+    <style>
+        @import url('assets/css/inter.css');
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Hero Background - Specific Oil Rig Image */
+        .hero-bg {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('img/hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* Animation Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Staggered Children Animation */
+        .reveal-group>* {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal-group.active>* {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-group.active>*:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+
+        .reveal-group.active>*:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+
+        .reveal-group.active>*:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+
+        .reveal-group.active>*:nth-child(4) {
+            transition-delay: 0.4s;
+        }
+
+        /* Technical Diagram Styling & Hover */
+        .tech-diagram {
+            background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+            background-size: 20px 20px;
+            transition: transform 0.5s ease;
+        }
+
+        .group:hover .tech-diagram {
+            transform: scale(1.02);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        /* Smooth Hover for Images */
+        .tech-diagram img {
+            transition: all 0.7s ease;
+        }
+
+        .group:hover .tech-diagram img {
+            filter: grayscale(0%) contrast(100%);
+            transform: scale(1.05);
+        }
+
+        /* Nav Hover Effect */
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #dc2626;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body class="bg-white font-sans text-black overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="bg-black text-white p-4 sticky top-0 z-50 shadow-xl border-b border-red-900/30">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <!-- Replace 'logo.png' with your actual image file path -->
+                <img src="img/logo.png" alt="IBE LLC" class="h-12 md:h-16 object-contain">
+                <div class="flex flex-col">
+                    <span class="text-2xl font-bold tracking-tighter leading-none">IBE<span
+                            class="text-red-600">LLC</span></span>
+                    <span class="text-xs text-gray-400 tracking-widest">ASSET INTEGRITY</span>
+                </div>
+            </div>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="lg:hidden text-white focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+
+            <!-- Desktop Menu -->
+            <div class="hidden lg:flex items-center space-x-8 font-medium text-sm uppercase tracking-widest">
+                <a href="index.html" class="nav-link hover:text-red-600 transition duration-300">Home</a>
+                <a href="#products" class="nav-link hover:text-red-600 transition duration-300">Products</a>
+                <a href="services.html" class="nav-link hover:text-red-600 transition duration-300">Services</a>
+
+                <!-- Download Brochure Button -->
+                <a href="brochure.pdf" download
+                    class="border border-white px-4 py-2 hover:bg-white hover:text-black transition flex items-center">
+                    <i class="fas fa-file-pdf mr-2"></i> Brochure
+                </a>
+                <a href="#contact"
+                    class="bg-red-600 text-white px-5 py-2 font-bold hover:bg-red-700 transition duration-300">Contact</a>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-black text-white border-t border-gray-800 mt-4 pb-4">
+            <div class="flex flex-col space-y-4 pt-4 px-4 font-medium text-sm uppercase tracking-widest">
+                <a href="index.html" class="hover:text-red-600 transition duration-300">Home</a>
+                <a href="#products" class="hover:text-red-600 transition duration-300">Products</a>
+                <a href="services.html" class="hover:text-red-600 transition duration-300">Services</a>
+                <a href="index.html#regions" class="hover:text-red-600 transition duration-300">Regions</a>
+                <a href="#contact"
+                    class="bg-red-600 text-white px-5 py-2 font-bold hover:bg-red-700 transition duration-300 w-fit">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="hero-bg h-[500px] flex items-center text-white relative">
+        <div class="absolute left-0 top-0 bottom-0 w-2 bg-red-600"></div>
+        <div class="container mx-auto px-6 reveal active">
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
+                Our <span class="text-red-600">Products</span>
+            </h1>
+            <p class="text-xl mb-10 max-w-2xl text-gray-200 font-light border-l-4 border-red-600 pl-6">
+                Discover our advanced engineering solutions and asset integrity products designed for optimal
+                performance.
+            </p>
+            <div class="mt-8">
+                <a href="brochure.pdf" download
+                    class="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded transition duration-300 inline-flex items-center shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                    <i class="fas fa-file-pdf mr-2"></i> Download Brochure
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Products Section (Formerly Services) -->
+    <section id="products" class="py-24 bg-white relative">
+        <div class="container mx-auto px-6">
+
+            <div class="text-center mb-20 reveal">
+                <span class="text-red-600 font-bold tracking-widest uppercase text-sm">Technical Capabilities</span>
+                <h2 class="text-4xl md:text-5xl font-bold text-black mt-2">Engineering & Asset Solutions</h2>
+                <div class="w-24 h-1.5 bg-red-600 mx-auto mt-6"></div>
+            </div>
+
+            <!-- 1. Mast Synchronization -->
+            <div
+                class="group flex flex-col lg:flex-row items-center gap-16 mb-32 reveal border-b border-gray-100 pb-16">
+                <div class="w-full lg:w-1/2">
+                    <div class="tech-diagram p-4 border-2 border-gray-100 rounded-xl">
+                        <!-- Photo: Oil Rig Mast / Hydraulic Cylinders -->
+                        <img src="img/mast.png" alt="Mast Synchronization"
+                            class="w-full h-50 md:h-50 object-cover grayscale contrast-125 hover:grayscale-0 transition duration-500">
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2">
+                    <h3 class="text-3xl font-bold mb-4 flex items-center"><i
+                            class="fas fa-sync-alt text-red-600 mr-4"></i>Mast Synchronization</h3>
+                    <p class="text-gray-600 text-lg mb-6">Seamless, safe method for raising and lowering rig masts using
+                        3-stage telescopic cylinders and 60 kW HPU units.</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check text-red-600 mr-2"></i> Rotary Gear Flow
+                            Divider precision</li>
+                        <li class="flex items-center"><i class="fas fa-check text-red-600 mr-2"></i> ISO VG-68 Hydraulic
+                            Standards</li>
+                        <li class="flex items-center"><i class="fas fa-check text-red-600 mr-2"></i> Electrical
+                            monitoring integration</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 2. Clean Air Motor Blower -->
+            <div
+                class="group flex flex-col lg:flex-row-reverse items-center gap-16 mb-32 reveal border-b border-gray-100 pb-16">
+                <div class="w-full lg:w-1/2">
+                    <div class="tech-diagram p-4 border-2 border-gray-100 rounded-xl relative">
+                        <!-- Photo: Industrial Ventilation / Dust storm environment -->
+                        <img src="img/blower.png" alt="Clean Air Blower"
+                            class="w-full h-50 md:h-50 object-cover grayscale contrast-125 hover:grayscale-0 transition duration-500">
+                        <div class="absolute -bottom-4 -left-4 bg-red-600 text-white p-4 font-bold shadow-lg">99%
+                            Particle Removal</div>
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2">
+                    <h3 class="text-3xl font-bold mb-4 flex items-center"><i
+                            class="fas fa-wind text-red-600 mr-4"></i>Clean Air Motor Blower</h3>
+                    <p class="text-gray-600 text-lg mb-6">
+                        Combating equipment failure caused by sand and dust. Our two-stage filtration system delivers
+                        continuous clean airflow to critical motors.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-gray-50 p-4 border-l-4 border-black">
+                            <h4 class="font-bold">The Problem</h4>
+                            <p class="text-sm text-gray-500">Motors exposed to sand/moisture leading to frequent
+                                downtime.</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 border-l-4 border-red-600">
+                            <h4 class="font-bold">Our Solution</h4>
+                            <p class="text-sm text-gray-500">Self-cleaning blower system that extends service life.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Tan Delta Oil Analysis -->
+            <div
+                class="group flex flex-col lg:flex-row items-center gap-16 mb-32 reveal border-b border-gray-100 pb-16">
+                <div class="w-full lg:w-1/2">
+                    <div class="tech-diagram p-4 border-2 border-gray-100 rounded-xl">
+                        <!-- Photo: Laboratory / Oil Sample -->
+                        <img src="img/tdn.png" alt="Oil Analysis"
+                            class="w-full h-50 md:h-50 object-cover grayscale contrast-125 hover:grayscale-0 transition duration-500">
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2">
+                    <h3 class="text-3xl font-bold mb-4 flex items-center"><i
+                            class="fas fa-vial text-red-600 mr-4"></i>Tan Delta & RRR Filtration</h3>
+                    <p class="text-gray-600 text-lg mb-6">
+                        Real-time molecular oil quality monitoring (TDN). Replace oil only when necessary, not on a
+                        fixed schedule.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <i class="fas fa-chart-line text-red-600 mt-1 mr-3"></i>
+                            <div>
+                                <strong class="block">Full Spectrum Analysis</strong>
+                                <span class="text-sm text-gray-500">Detects water ingress, fuel dilution, and oxidation
+                                    instantly.</span>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-dollar-sign text-red-600 mt-1 mr-3"></i>
+                            <div>
+                                <strong class="block">Cost Saving Product</strong>
+                                <span class="text-sm text-gray-500">Estimated savings of ~$10,000 per engine/year by
+                                    extending oil life 2X.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Alpha System (Engines) -->
+            <div
+                class="group flex flex-col lg:flex-row-reverse items-center gap-16 mb-32 reveal border-b border-gray-100 pb-16">
+                <div class="w-full lg:w-1/2">
+                    <div class="tech-diagram p-4 border-2 border-gray-100 rounded-xl">
+                        <!-- Photo: Heavy Diesel Engine -->
+                        <img src="img/diesel.png" alt="Engine Diagnostics"
+                            class="w-full h-50 md:h-50 object-cover grayscale contrast-125 hover:grayscale-0 transition duration-500">
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2">
+                    <h3 class="text-3xl font-bold mb-4 flex items-center"><i
+                            class="fas fa-cogs text-red-600 mr-4"></i>Alpha Engine Diagnostics</h3>
+                    <p class="text-gray-600 text-lg mb-6">
+                        Advanced health indicators for Diesel and Gas engines using Torsional Vibration analysis.
+                    </p>
+                    <ul class="space-y-3">
+                        <li class="flex items-center p-3 bg-gray-50 rounded">
+                            <span
+                                class="w-8 h-8 bg-black text-white flex items-center justify-center rounded-full mr-3">1</span>
+                            <span><strong>MPU Sensor:</strong> Measures vibration at crankshaft.</span>
+                        </li>
+                        <li class="flex items-center p-3 bg-gray-50 rounded">
+                            <span
+                                class="w-8 h-8 bg-black text-white flex items-center justify-center rounded-full mr-3">2</span>
+                            <span><strong>TDC Sensor:</strong> References specific cylinders.</span>
+                        </li>
+                        <li class="flex items-center p-3 bg-gray-50 rounded">
+                            <span
+                                class="w-8 h-8 bg-red-600 text-white flex items-center justify-center rounded-full mr-3">3</span>
+                            <span><strong>Result:</strong> Identify cylinder-specific health issues without opening the
+                                engine.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 5. Power Factor Correction -->
+            <div
+                class="group flex flex-col lg:flex-row items-center gap-16 mb-32 reveal border-b border-gray-100 pb-16">
+                <div class="w-full lg:w-1/2">
+                    <div class="tech-diagram p-4 border-2 border-gray-100 rounded-xl">
+                        <!-- Photo: Electrical Panel / Generator -->
+                        <img src="img/pf.png" alt="Power Factor"
+                            class="w-full h-50 md:h-50 object-cover grayscale contrast-125 hover:grayscale-0 transition duration-500">
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2">
+                    <h3 class="text-3xl font-bold mb-4 flex items-center"><i
+                            class="fas fa-bolt text-red-600 mr-4"></i>Power Factor Correction (PFC)</h3>
+                    <p class="text-gray-600 text-lg mb-6">
+                        Optimizing DC Rigs to perform with the efficiency of AC Rigs. By increasing Power Factor (PF)
+                        from 0.55 to 0.90, we drastically reduce fuel consumption.
+                    </p>
+                    <div class="bg-black text-white p-6 rounded-lg shadow-xl">
+                        <div class="flex justify-between items-end border-b border-gray-700 pb-4 mb-4">
+                            <span>Utility Cost Reduction</span>
+                            <span class="text-2xl font-bold text-red-600">-30% to -40%</span>
+                        </div>
+                        <div class="flex justify-between items-end">
+                            <span>Equipment Lifespan</span>
+                            <span class="text-2xl font-bold text-red-600">Extended</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. Outdoor Cooling -->
+            <div
+                class="group flex flex-col lg:flex-row-reverse items-center gap-16 mb-32 reveal border-b border-gray-100 pb-16">
+                <div class="w-full lg:w-1/2">
+                    <div class="tech-diagram p-4 border-2 border-gray-100 rounded-xl">
+                        <!-- Photo: Misting / Fog -->
+                        <img src="img/mist2.png" alt="Misting System"
+                            class="w-full h-50 md:h-50 object-cover grayscale contrast-125 hover:grayscale-0 transition duration-500">
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2">
+                    <h3 class="text-3xl font-bold mb-4 flex items-center"><i
+                            class="fas fa-snowflake text-red-600 mr-4"></i>Outdoor Misting Systems</h3>
+                    <p class="text-gray-600 text-lg mb-6">
+                        Industrial cooling solutions for open or covered rig areas. Uses high-pressure fog to provide
+                        dramatic temperature reductions in harsh desert environments.
+                    </p>
+                    <a href="#contact" class="text-red-600 font-bold hover:text-black transition">Request System Layout
+                        <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-6 reveal">
+            <div class="flex flex-wrap -mx-4">
+                <div class="w-full lg:w-1/2 px-4 mb-12 lg:mb-0">
+                    <h2 class="text-4xl font-bold text-black mb-6">Contact Engineering Team</h2>
+                    <p class="text-gray-600 mb-8 text-lg">Partner with International Business Experts LLC for your next
+                        rig move or system upgrade.</p>
+                    <div class="space-y-6">
+                        <div class="flex items-center space-x-4 group">
+                            <div
+                                class="w-10 h-10 bg-black text-white flex items-center justify-center rounded group-hover:bg-red-600 transition">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <span class="text-black font-medium">ALkhuair , Oman, Muscat</span>
+                        </div>
+                        <div class="flex items-center space-x-4 group">
+                            <div
+                                class="w-10 h-10 bg-black text-white flex items-center justify-center rounded group-hover:bg-red-600 transition">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <span class="text-black font-medium">mohamed.mahmoud@interbsnsexpert.om</span>
+                        </div>
+                        <div class="flex items-center space-x-4 group mt-6">
+                            <div
+                                class="w-10 h-10 bg-black text-white flex items-center justify-center rounded group-hover:bg-red-600 transition">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <span class="text-black font-medium">+968-7709-3791</span>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Form Column -->
+                <div class="w-full lg:w-1/2 px-4">
+                    <form class="bg-neutral-50 p-8 border border-neutral-200 shadow-2xl relative">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-black to-red-600"></div>
+                        <div class="grid md:grid-cols-2 gap-4 mb-4">
+                            <input type="text" placeholder="Name"
+                                class="w-full p-3 bg-white border border-gray-300 focus:outline-none focus:border-red-600 transition">
+                            <input type="email" placeholder="Email"
+                                class="w-full p-3 bg-white border border-gray-300 focus:outline-none focus:border-red-600 transition">
+                        </div>
+                        <select
+                            class="w-full p-3 bg-white border border-gray-300 mb-4 focus:outline-none focus:border-red-600 text-gray-600">
+                            <option>Inquiry Type</option>
+                            <optgroup label="Projects Support">
+                                <option>Manpower Supply Services</option>
+                                <option>Audits and Acceptance Surveys</option>
+                                <option>Engineering studies and analysis</option>
+                                <option>Project Management and turnkey</option>
+                                <option>Project QA/QC</option>
+                                <option>FAT witnessing</option>
+                            </optgroup>
+                            <optgroup label="Technical Operations Support">
+                                <option>Technical Training (Classroom, online and Hands on)</option>
+                                <option>Failure Investigation and Root Cause Analysis</option>
+                                <option>Preventive Maintenance System Development</option>
+                                <option>Asset Management System Development</option>
+                                <option>Inventory management and optimization</option>
+                                <option>Downtime Analysis And Recording</option>
+                                <option>Competency assessment and competency management system</option>
+                            </optgroup>
+                            <optgroup label="Inspection Services">
+                                <option>NDT Inspection Services</option>
+                                <option>Lifting gear Inspection Services</option>
+                                <option>Drops Survey Services</option>
+                                <option>Wall thickness gauging</option>
+                                <option>EX Survey Services</option>
+                                <option>CAT III / CAT IV Services for rigs and oilfield equipment</option>
+                            </optgroup>
+                            <optgroup label="Add Value Services">
+                                <option>Upstream Services</option>
+                                <option>Downstream Services</option>
+                            </optgroup>
+                            <optgroup label="Equipment And Spare Parts Supply">
+                                <option>Coil tubing units and related spares</option>
+                                <option>Completion tools and related spares</option>
+                                <option>Slickline units and related spares</option>
+                                <option>Cementing units and related spares</option>
+                                <option>Frac units and related spares</option>
+                                <option>Drilling rigs equipment (onshore/offshore)</option>
+                                <option>Solid control equipment</option>
+                                <option>Electromechanical spares</option>
+                                <option>Chemicals supplies (drilling fluid, oilfield)</option>
+                                <option>Heavy equipment rentals</option>
+                                <option>PDC Drill Bits</option>
+                                <option>Diesel And Gas Engines Spares</option>
+                            </optgroup>
+                            <optgroup label="Engineering & Asset Solutions">
+                                <option>Mast Synchronization</option>
+                                <option>Clean Air Motor Blower</option>
+                                <option>Tan Delta & RRR Filtration</option>
+                                <option>Alpha Engine Diagnostics</option>
+                                <option>Power Factor Correction (PFC)</option>
+                                <option>Outdoor Misting Systems</option>
+                            </optgroup>
+                        </select>
+                        <textarea rows="4" placeholder="Project Details"
+                            class="w-full p-3 bg-white border border-gray-300 mb-4 focus:outline-none focus:border-red-600 transition"></textarea>
+                        <button
+                            class="w-full bg-black text-white font-bold py-4 hover:bg-red-600 transition duration-300 uppercase tracking-wider">
+                            Submit Request
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-12 border-t border-neutral-900">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-6 md:mb-0 text-center md:text-left">
+                <h5 class="text-xl font-bold mb-2">International Business Experts <span class="text-red-600">LLC</span>
+                </h5>
+                <p class="text-gray-500 text-sm">&copy; 2025 All Rights Reserved.</p>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- Floating Contact Button -->
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col-reverse items-end space-y-reverse space-y-4">
+        <!-- Main Button -->
+        <button id="contactToggle"
+            class="w-14 h-14 bg-black text-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-800 transition duration-300 focus:outline-none">
+            <i class="fas fa-comment-dots text-2xl"></i>
+        </button>
+
+        <!-- Menu Items (Hidden by default) -->
+        <div id="contactMenu"
+            class="hidden flex flex-col items-end space-y-3 transition-all duration-300 origin-bottom transform translate-y-4 opacity-0">
+            <!-- WhatsApp -->
+            <a href="https://wa.me/96877093791" target="_blank"
+                class="flex items-center space-x-2 bg-black text-white px-4 py-2 rounded-full shadow-md hover:bg-gray-800 transition">
+                <span class="text-sm font-medium">WhatsApp</span>
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <!-- Email -->
+            <a href="mailto:mohamed.mahmoud@interbsnsexpert.om"
+                class="flex items-center space-x-2 bg-black text-white px-4 py-2 rounded-full shadow-md hover:bg-gray-800 transition">
+                <span class="text-sm font-medium">Email</span>
+                <i class="fas fa-envelope"></i>
+            </a>
+            <!-- Call -->
+            <a href="tel:+96877093791"
+                onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'});"
+                class="flex items-center space-x-2 bg-black text-white px-4 py-2 rounded-full shadow-md hover:bg-gray-800 transition">
+                <span class="text-sm font-medium">Call</span>
+                <i class="fas fa-phone"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Animation Script -->
+    <script>
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal, .reveal-group').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // Floating Button Logic
+        const toggleBtn = document.getElementById('contactToggle');
+        const menu = document.getElementById('contactMenu');
+
+        toggleBtn.addEventListener('click', () => {
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                // Small delay to allow display change to register before animating
+                setTimeout(() => {
+                    menu.classList.remove('translate-y-4', 'opacity-0');
+                }, 10);
+                toggleBtn.innerHTML = '<i class="fas fa-times text-2xl"></i>';
+            } else {
+                menu.classList.add('translate-y-4', 'opacity-0');
+                toggleBtn.innerHTML = '<i class="fas fa-comment-dots text-2xl"></i>';
+                // Wait for transition to finish before hiding
+                setTimeout(() => {
+                    menu.classList.add('hidden');
+                }, 300);
+            }
+        });
+    </script>
+</body>
+
+</html>

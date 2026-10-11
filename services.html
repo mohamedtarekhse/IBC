@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - International Business Experts LLC</title>
+    <script src="assets/js/tailwindcss.js"></script>
+    <link rel="stylesheet" href="assets/css/all.min.css">
+    <style>
+        @import url('assets/css/inter.css');
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Hero Background */
+        .hero-bg {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+                url('img/hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* Animation Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Staggered Children Animation */
+        .reveal-group>* {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal-group.active>* {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-group.active>*:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+
+        .reveal-group.active>*:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+
+        .reveal-group.active>*:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+
+        /* Nav Hover Effect */
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #dc2626;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Sticky WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        /* Dropdown Styles */
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        /* Service Card Hover */
+        .service-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body class="bg-white font-sans text-black overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="bg-black text-white p-4 sticky top-0 z-50 shadow-xl border-b border-red-900/30">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <img src="img/logo.png" alt="IBE LLC" class="h-20 md:h-20 object-contain">
+                <div class="flex flex-col">
+                    <span class="text-2xl font-bold tracking-tighter leading-none">IBE<span
+                            class="text-red-600">LLC</span></span>
+                    <span class="text-xs text-gray-400 tracking-widest">ASSET INTEGRITY & ENGINEERING SOLUTIONS</span>
+                </div>
+            </div>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="lg:hidden text-white focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+
+            <!-- Desktop Menu -->
+            <div class="hidden lg:flex items-center space-x-8 font-medium text-sm uppercase tracking-widest">
+                <a href="index.html" class="nav-link hover:text-red-600 transition duration-300">Home</a>
+                <a href="products.html" class="nav-link hover:text-red-600 transition duration-300">Products</a>
+                <a href="services.html" class="nav-link hover:text-red-600 transition duration-300">Services</a>
+                <!-- Download Brochure Button -->
+                <a href="brochure.pdf" download
+                    class="border border-white px-4 py-2 hover:bg-white hover:text-black transition flex items-center">
+                    <i class="fas fa-file-pdf mr-2"></i> Brochure
+                </a>
+                <a href="#contact"
+                    class="bg-red-600 text-white px-5 py-2 font-bold hover:bg-red-700 transition duration-300">Contact</a>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-black text-white border-t border-gray-800 mt-4 pb-4">
+            <div class="flex flex-col space-y-4 pt-4 px-4 font-medium text-sm uppercase tracking-widest">
+                <a href="index.html" class="hover:text-red-600 transition duration-300">Home</a>
+                <a href="products.html" class="hover:text-red-600 transition duration-300">Products</a>
+
+                <!-- Mobile Services Submenu -->
+                <div class="border-l-2 border-red-600 pl-4 space-y-3">
+                    <span class="text-red-600 font-bold">Services</span>
+                    <a href="#main-services" class="block text-gray-300 hover:text-white text-xs">Main Services</a>
+                    <a href="#add-value-services" class="block text-gray-300 hover:text-white text-xs">Add Value
+                        Services</a>
+                    <a href="#equipment" class="block text-gray-300 hover:text-white text-xs">Equipment Supply</a>
+                    <a href="#accreditation" class="block text-gray-300 hover:text-white text-xs">Accreditation</a>
+                </div>
+
+                <a href="index.html#regions" class="hover:text-red-600 transition duration-300">Regions</a>
+                <a href="#contact"
+                    class="bg-red-600 text-white px-5 py-2 font-bold hover:bg-red-700 transition duration-300 w-fit">Contact</a>
+            </div>
+        </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-bg h-[400px] flex items-center text-white relative">
+        <div class="absolute left-0 top-0 bottom-0 w-2 bg-red-600"></div>
+        <div class="container mx-auto px-6 reveal active">
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
+                Asset Integrity <span class="text-red-600">Overview</span>
+            </h1>
+            <p class="text-xl max-w-2xl text-gray-200 font-light border-l-4 border-red-600 pl-6">
+                Comprehensive specialized services for Essential Operations, Value-Add Engineering, and Equipment
+                Supply.
+            </p>
+            <div class="mt-8">
+                <a href="brochure.pdf" download
+                    class="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded transition duration-300 inline-flex items-center shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                    <i class="fas fa-file-pdf mr-2"></i> Download Brochure
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Services Section -->
+    <section id="main-services" class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <span class="text-red-600 font-bold tracking-widest uppercase text-sm">Overview</span>
+                <h2 class="text-4xl font-bold text-black mt-2">Main Services</h2>
+                <div class="w-24 h-1.5 bg-red-600 mx-auto mt-6"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 reveal-group">
+                <!-- 1. Projects Support -->
+                <div
+                    class="service-card bg-neutral-50 p-8 border border-neutral-200 rounded-xl relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition">
+                        <i class="fas fa-project-diagram text-8xl text-red-600"></i>
+                    </div>
+                    <div class="bg-gray-300 text-black font-bold text-sm inline-block px-3 py-1 mb-6 rounded">Projects
+                        Support</div>
+                    <ul class="space-y-4">
+                        <li class="flex items-start"><span
+                                class="w-1.5 h-1.5 bg-red-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>Manpower
+                            Supply Services</li>
+                        <li class="flex items-start"><span
+                                class="w-1.5 h-1.5 bg-red-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>Audits and
+                            Acceptance Surveys</li>
+                        <li class="flex items-start"><span
+                                class="w-1.5 h-1.5 bg-red-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>Engineering
+                            studies and analysis</li>
+                        <li class="flex items-start"><span
+                                class="w-1.5 h-1.5 bg-red-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>Project
+                            Management and turnkey</li>
+                        <li class="flex items-start"><span
+                                class="w-1.5 h-1.5 bg-red-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>Project QA/QC
+                        </li>
+                        <li class="flex items-start"><span
+                                class="w-1.5 h-1.5 bg-red-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>FAT
+                            witnessing</li>
+                    </ul>
+                </div>
+
+                <!-- 2. Technical Operations Support -->
+                <div
+                    class="service-card bg-neutral-50 p-8 border border-neutral-200 rounded-xl relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition">
+                        <i class="fas fa-cogs text-8xl text-red-600"></i>
+                    </div>
+                    <div class="bg-gray-300 text-black font-bold text-sm inline-block px-3 py-1 mb-6 rounded">Technical
+                        Operations Support</div>
+                    <ul class="space-y-4">
+                        <li class="flex items-start"><span
+                                class="w-1.5 h-1.5 bg-red-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>Technical
+                            Training (Classroom, online and Hands on)</li>
+                        <li class="flex items-start"><span
+                                class="w-1.5 h-1.5 bg-red-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>Failure
+                            Investigation and Root Cause Analysis</li>
+                        <li class="flex items-start"><span
+                                class="w-1.5 h-1.5 bg-red-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>Preventive
+                            Maintenance System Development</li>
+                        <li class="flex items-start"><span
+                                class="w-1.5 h-1.5 bg-red-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>Asset
+                            Management System Development</li>
+                        <li class="flex items-start"><span
+                                class="w-1.5 h-1.5 bg-red-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>Inventory
+                            management and optimization</li>
+                        <li class="flex items-start"><span
+                                class="w-1.5 h-1.5 bg-red-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>Downtime
+                            Analysis And Recording</li>
+                        <li class="flex items-start"><span
+                                class="w-1.5 h-1.5 bg-red-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>Competency
+                            assessment and competency management system</li>
+                    </ul>
+                </div>
+
+                <!-- 3. Inspection Services -->
+                <div
+                    class="service-card bg-neutral-50 p-8 border border-neutral-200 rounded-xl relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition">
+                        <i class="fas fa-search text-8xl text-red-600"></i>
+                    </div>
+                    <div class="bg-gray-300 text-black font-bold text-sm inline-block px-3 py-1 mb-6 rounded">Inspection
+                        Services</div>
+                    <ul class="space-y-4">
+                        <li class="flex items-start"><span
+                                class="w-1.5 h-1.5 bg-red-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>NDT
+                            Inspection Services</li>
+                        <li class="flex items-start"><span
+                                class="w-1.5 h-1.5 bg-red-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>Lifting gear
+                            Inspection Services</li>
+                        <li class="flex items-start"><span
+                                class="w-1.5 h-1.5 bg-red-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>Drops Survey
+                            Services</li>
+                        <li class="flex items-start"><span
+                                class="w-1.5 h-1.5 bg-red-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>Wall
+                            thickness gauging</li>
+                        <li class="flex items-start"><span
+                                class="w-1.5 h-1.5 bg-red-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>EX Survey
+                            Services</li>
+                        <li class="flex items-start"><span
+                                class="w-1.5 h-1.5 bg-red-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>CAT III / CAT
+                            IV Services for rigs and oilfield equipment</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Services Section -->
+    <section id="add-value-services" class="py-24 bg-neutral-900 text-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <span class="text-red-600 font-bold tracking-widest uppercase text-sm">Capabilities</span>
+                <h2 class="text-4xl font-bold mt-2">Add Value Services</h2>
+                <div class="w-24 h-1.5 bg-red-600 mx-auto mt-6"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 reveal-group">
+                <!-- Upstream -->
+                <div class="border border-neutral-700 p-8 rounded-xl hover:border-red-600 transition duration-300">
+                    <h3 class="text-2xl font-bold mb-6 flex items-center text-red-600">
+                        <i class="fas fa-oil-well mr-3"></i> Upstream Services
+                    </h3>
+                    <ul class="space-y-4 text-gray-300">
+                        <li class="flex items-center bg-neutral-800 p-3 rounded">
+                            <i class="fas fa-check text-red-600 mr-3"></i>
+                            Cost saving Solutions (Fuel/oil consumption reduction products)
+                        </li>
+                        <li class="flex items-center bg-neutral-800 p-3 rounded">
+                            <i class="fas fa-check text-red-600 mr-3"></i>
+                            Computerized Asset, Operation, Maintenance management system (OMx)
+                        </li>
+                    </ul>
+                </div>
+                <!-- Downstream -->
+                <div class="border border-neutral-700 p-8 rounded-xl hover:border-red-600 transition duration-300">
+                    <h3 class="text-2xl font-bold mb-6 flex items-center text-red-600">
+                        <i class="fas fa-industry mr-3"></i> Downstream Services
+                    </h3>
+                    <ul class="space-y-4 text-gray-300">
+                        <li class="flex items-center bg-neutral-800 p-3 rounded">
+                            <i class="fas fa-check text-red-600 mr-3"></i>
+                            Safety integrity level studies
+                        </li>
+                        <li class="flex items-center bg-neutral-800 p-3 rounded">
+                            <i class="fas fa-check text-red-600 mr-3"></i>
+                            Quantitative risk assessment studies
+                        </li>
+                        <li class="flex items-center bg-neutral-800 p-3 rounded">
+                            <i class="fas fa-check text-red-600 mr-3"></i>
+                            Asset management and life cycle extension
+                        </li>
+                        <li class="flex items-center bg-neutral-800 p-3 rounded">
+                            <i class="fas fa-check text-red-600 mr-3"></i>
+                            Piping / Pressure vessel / Structural Integrity Inspection
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipment Supply Section -->
+    <section id="equipment" class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <span class="text-red-600 font-bold tracking-widest uppercase text-sm">Inventory</span>
+                <h2 class="text-4xl font-bold text-black mt-2">Equipment And Spare Parts Supply</h2>
+                <div class="w-24 h-1.5 bg-red-600 mx-auto mt-6"></div>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 reveal-group">
+                <!-- Item 1 -->
+                <div
+                    class="group p-6 rounded-lg text-center hover:shadow-2xl transition border border-gray-100 flex flex-col items-center justify-center bg-white hover:border-red-600">
+                    <img src="img/coil.png" alt="Equipment"
+                        class="h-32 w-32 object-contain grayscale contrast-125 group-hover:grayscale-0 transition duration-500 mb-6">
+                    <h4 class="font-bold">Coil tubing units and related spares</h4>
+                </div>
+                <!-- Item 2 -->
+                <div
+                    class="group p-6 rounded-lg text-center hover:shadow-2xl transition border border-gray-100 flex flex-col items-center justify-center bg-white hover:border-red-600">
+                    <img src="img/completion.png" alt="Equipment"
+                        class="h-32 w-32 object-contain grayscale contrast-125 group-hover:grayscale-0 transition duration-500 mb-6">
+                    <h4 class="font-bold">Completion tools and related spares</h4>
+                </div>
+                <!-- Item 3 -->
+                <div
+                    class="group p-6 rounded-lg text-center hover:shadow-2xl transition border border-gray-100 flex flex-col items-center justify-center bg-white hover:border-red-600">
+                    <img src="img/slicklineunits.png" alt="Equipment"
+                        class="h-32 w-32 object-contain grayscale contrast-125 group-hover:grayscale-0 transition duration-500 mb-6">
+                    <h4 class="font-bold">Slickline units and related spares</h4>
+                </div>
+                <!-- Item 4 -->
+                <div
+                    class="group p-6 rounded-lg text-center hover:shadow-2xl transition border border-gray-100 flex flex-col items-center justify-center bg-white hover:border-red-600">
+                    <img src="img/cementunit.png" alt="Equipment"
+                        class="h-32 w-32 object-contain grayscale contrast-125 group-hover:grayscale-0 transition duration-500 mb-6">
+                    <h4 class="font-bold">Cementing units and related spares</h4>
+                </div>
+
+                <!-- Item 5 -->
+                <div
+                    class="group p-6 rounded-lg text-center hover:shadow-2xl transition border border-gray-100 flex flex-col items-center justify-center bg-white hover:border-red-600">
+                    <img src="img/frac.png" alt="Equipment"
+                        class="h-32 w-32 object-contain grayscale contrast-125 group-hover:grayscale-0 transition duration-500 mb-6">
+                    <h4 class="font-bold">Frac units and related spares</h4>
+                </div>
+                <!-- Item 6 -->
+                <div
+                    class="group p-6 rounded-lg text-center hover:shadow-2xl transition border border-gray-100 flex flex-col items-center justify-center bg-white hover:border-red-600">
+                    <img src="img/onshoreoffshore.png" alt="Equipment"
+                        class="h-32 w-32 object-contain grayscale contrast-125 group-hover:grayscale-0 transition duration-500 mb-6">
+                    <h4 class="font-bold">Drilling rigs equipment (onshore/offshore)</h4>
+                </div>
+                <!-- Item 7 -->
+                <div
+                    class="group p-6 rounded-lg text-center hover:shadow-2xl transition border border-gray-100 flex flex-col items-center justify-center bg-white hover:border-red-600">
+                    <img src="img/shaleshaker.png" alt="Equipment"
+                        class="h-32 w-32 object-contain grayscale contrast-125 group-hover:grayscale-0 transition duration-500 mb-6">
+                    <h4 class="font-bold">Solid control equipment</h4>
+                </div>
+                <!-- Item 8 -->
+                <div
+                    class="group p-6 rounded-lg text-center hover:shadow-2xl transition border border-gray-100 flex flex-col items-center justify-center bg-white hover:border-red-600">
+                    <img src="img/electromechspare.png" alt="Equipment"
+                        class="h-32 w-32 object-contain grayscale contrast-125 group-hover:grayscale-0 transition duration-500 mb-6">
+                    <h4 class="font-bold">Electromechanical spares</h4>
+                </div>
+
+                <!-- Item 9 -->
+                <div
+                    class="group p-6 rounded-lg text-center hover:shadow-2xl transition border border-gray-100 flex flex-col items-center justify-center bg-white hover:border-red-600">
+                    <img src="img/chemical.png" alt="Equipment"
+                        class="h-32 w-32 object-contain grayscale contrast-125 group-hover:grayscale-0 transition duration-500 mb-6">
+                    <h4 class="font-bold">Chemicals supplies (drilling fluid, oilfield)</h4>
+                </div>
+                <!-- Item 10 -->
+                <div
+                    class="group p-6 rounded-lg text-center hover:shadow-2xl transition border border-gray-100 flex flex-col items-center justify-center bg-white hover:border-red-600">
+                    <img src="img/heavyequipment.png" alt="Equipment"
+                        class="h-32 w-32 object-contain grayscale contrast-125 group-hover:grayscale-0 transition duration-500 mb-6">
+                    <h4 class="font-bold">Heavy equipment rentals</h4>
+                </div>
+                <!-- Item 11 -->
+                <div
+                    class="group p-6 rounded-lg text-center hover:shadow-2xl transition border border-gray-100 flex flex-col items-center justify-center bg-white hover:border-red-600">
+                    <img src="img/pdc.png" alt="Equipment"
+                        class="h-32 w-32 object-contain grayscale contrast-125 group-hover:grayscale-0 transition duration-500 mb-6">
+                    <h4 class="font-bold">PDC Drill Bits</h4>
+                </div>
+                <!-- Item 12 -->
+                <div
+                    class="group p-6 rounded-lg text-center hover:shadow-2xl transition border border-gray-100 flex flex-col items-center justify-center bg-white hover:border-red-600">
+                    <img src="img/enginespares.png" alt="Equipment"
+                        class="h-32 w-32 object-contain grayscale contrast-125 group-hover:grayscale-0 transition duration-500 mb-6">
+                    <h4 class="font-bold">Diesel And Gas Engines Spares</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Accreditation Section -->
+    <section id="accreditation" class="py-20 bg-gray-100 border-t border-gray-200">
+        <div class="container mx-auto px-6 text-center reveal">
+            <div class="text-center mb-12">
+                <span class="text-red-600 font-bold tracking-widest uppercase text-sm">Quality Assurance</span>
+                <h2 class="text-4xl font-bold text-black mt-2">Technical Trainings & Accreditations 2025</h2>
+                <div class="w-24 h-1.5 bg-red-600 mx-auto mt-6"></div>
+            </div>
+
+            <!-- Logo Grid - Images from img folder -->
+            <div
+                class="grid grid-cols-3 md:grid-cols-6 gap-8 items-center justify-items-center opacity-80 hover:opacity-100 transition duration-500">
+                <img src="img/img49.jpg" alt="Accreditation"
+                    class="h-20 object-contain hover:scale-110 transition duration-300">
+                <img src="img/img51.jpg" alt="Accreditation"
+                    class="h-20 object-contain hover:scale-110 transition duration-300">
+                <img src="img/img52.jpg" alt="Accreditation"
+                    class="h-20 object-contain hover:scale-110 transition duration-300">
+                <img src="img/img53.jpg" alt="Accreditation"
+                    class="h-20 object-contain hover:scale-110 transition duration-300">
+                <img src="img/img55.jpg" alt="Accreditation"
+                    class="h-20 object-contain hover:scale-110 transition duration-300">
+                <img src="img/img57.jpg" alt="Accreditation"
+                    class="h-20 object-contain hover:scale-110 transition duration-300">
+                <img src="img/img59.jpg" alt="Accreditation"
+                    class="h-20 object-contain hover:scale-110 transition duration-300">
+                <img src="img/img61.jpg" alt="Accreditation"
+                    class="h-20 object-contain hover:scale-110 transition duration-300">
+                <img src="img/img63.jpg" alt="Accreditation"
+                    class="h-20 object-contain hover:scale-110 transition duration-300">
+                <img src="img/img65.jpg" alt="Accreditation"
+                    class="h-20 object-contain hover:scale-110 transition duration-300">
+                <img src="img/img67.jpg" alt="Accreditation"
+                    class="h-20 object-contain hover:scale-110 transition duration-300">
+                <img src="img/img69.jpg" alt="Accreditation"
+                    class="h-20 object-contain hover:scale-110 transition duration-300">
+                <img src="img/img71.jpg" alt="Accreditation"
+                    class="h-20 object-contain hover:scale-110 transition duration-300">
+                <img src="img/img73.jpg" alt="Accreditation"
+                    class="h-20 object-contain hover:scale-110 transition duration-300">
+                <img src="img/img75.jpg" alt="Accreditation"
+                    class="h-20 object-contain hover:scale-110 transition duration-300">
+                <img src="img/img77.jpg" alt="Accreditation"
+                    class="h-20 object-contain hover:scale-110 transition duration-300">
+                <img src="img/img79.jpg" alt="Accreditation"
+                    class="h-20 object-contain hover:scale-110 transition duration-300">
+                <img src="img/img81.jpg" alt="Accreditation"
+                    class="h-20 object-contain hover:scale-110 transition duration-300">
+                <img src="img/img83.jpg" alt="Accreditation"
+                    class="h-20 object-contain hover:scale-110 transition duration-300">
+                <img src="img/img85.jpg" alt="Accreditation"
+                    class="h-20 object-contain hover:scale-110 transition duration-300">
+                <img src="img/img87.jpg" alt="Accreditation"
+                    class="h-20 object-contain hover:scale-110 transition duration-300">
+                <img src="img/img89.jpg" alt="Accreditation"
+                    class="h-20 object-contain hover:scale-110 transition duration-300">
+                <img src="img/img91.jpg" alt="Accreditation"
+                    class="h-20 object-contain hover:scale-110 transition duration-300">
+                <img src="img/img93.jpg" alt="Accreditation"
+                    class="h-20 object-contain hover:scale-110 transition duration-300">
+                <img src="img/img95.jpg" alt="Accreditation"
+                    class="h-20 object-contain hover:scale-110 transition duration-300">
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-6 reveal">
+            <div class="flex flex-wrap -mx-4">
+                <div class="w-full lg:w-1/2 px-4 mb-12 lg:mb-0">
+                    <h2 class="text-4xl font-bold text-black mb-6">Contact Engineering Team</h2>
+                    <p class="text-gray-600 mb-8 text-lg">Partner with International Business Experts LLC for your next
+                        rig move or system upgrade.</p>
+                    <div class="space-y-6">
+                        <div class="flex items-center space-x-4 group">
+                            <div
+                                class="w-10 h-10 bg-black text-white flex items-center justify-center rounded group-hover:bg-red-600 transition">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <span class="text-black font-medium">Al Khuair , Oman, Muscat</span>
+                        </div>
+                        <div class="flex items-center space-x-4 group">
+                            <div
+                                class="w-10 h-10 bg-black text-white flex items-center justify-center rounded group-hover:bg-red-600 transition">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <span class="text-black font-medium">mohamed.mahmoud@interbsnsexpert.om</span>
+                        </div>
+                        <div class="flex items-center space-x-4 group">
+                            <div
+                                class="w-10 h-10 bg-black text-white flex items-center justify-center rounded group-hover:bg-red-600 transition">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <span class="text-black font-medium">+968-7709-3791</span>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Form Column -->
+                <div class="w-full lg:w-1/2 px-4">
+                    <form class="bg-neutral-50 p-8 border border-neutral-200 shadow-2xl relative">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-black to-red-600"></div>
+                        <div class="grid md:grid-cols-2 gap-4 mb-4">
+                            <input type="text" placeholder="Name"
+                                class="w-full p-3 bg-white border border-gray-300 focus:outline-none focus:border-red-600 transition">
+                            <input type="email" placeholder="Email"
+                                class="w-full p-3 bg-white border border-gray-300 focus:outline-none focus:border-red-600 transition">
+                        </div>
+                        <select
+                            class="w-full p-3 bg-white border border-gray-300 mb-4 focus:outline-none focus:border-red-600 text-gray-600">
+                            <option>Inquiry Type</option>
+                            <optgroup label="Projects Support">
+                                <option>Manpower Supply Services</option>
+                                <option>Audits and Acceptance Surveys</option>
+                                <option>Engineering studies and analysis</option>
+                                <option>Project Management and turnkey</option>
+                                <option>Project QA/QC</option>
+                                <option>FAT witnessing</option>
+                            </optgroup>
+                            <optgroup label="Technical Operations Support">
+                                <option>Technical Training (Classroom, online and Hands on)</option>
+                                <option>Failure Investigation and Root Cause Analysis</option>
+                                <option>Preventive Maintenance System Development</option>
+                                <option>Asset Management System Development</option>
+                                <option>Inventory management and optimization</option>
+                                <option>Downtime Analysis And Recording</option>
+                                <option>Competency assessment and competency management system</option>
+                            </optgroup>
+                            <optgroup label="Inspection Services">
+                                <option>NDT Inspection Services</option>
+                                <option>Lifting gear Inspection Services</option>
+                                <option>Drops Survey Services</option>
+                                <option>Wall thickness gauging</option>
+                                <option>EX Survey Services</option>
+                                <option>CAT III / CAT IV Services for rigs and oilfield equipment</option>
+                            </optgroup>
+                            <optgroup label="Add Value Services">
+                                <option>Upstream Services</option>
+                                <option>Downstream Services</option>
+                            </optgroup>
+                            <optgroup label="Equipment And Spare Parts Supply">
+                                <option>Coil tubing units and related spares</option>
+                                <option>Completion tools and related spares</option>
+                                <option>Slickline units and related spares</option>
+                                <option>Cementing units and related spares</option>
+                                <option>Frac units and related spares</option>
+                                <option>Drilling rigs equipment (onshore/offshore)</option>
+                                <option>Solid control equipment</option>
+                                <option>Electromechanical spares</option>
+                                <option>Chemicals supplies (drilling fluid, oilfield)</option>
+                                <option>Heavy equipment rentals</option>
+                                <option>PDC Drill Bits</option>
+                                <option>Diesel And Gas Engines Spares</option>
+                            </optgroup>
+                            <optgroup label="Engineering & Asset Solutions">
+                                <option>Mast Synchronization</option>
+                                <option>Clean Air Motor Blower</option>
+                                <option>Tan Delta & RRR Filtration</option>
+                                <option>Alpha Engine Diagnostics</option>
+                                <option>Power Factor Correction (PFC)</option>
+                                <option>Outdoor Misting Systems</option>
+                            </optgroup>
+                        </select>
+                        <textarea rows="4" placeholder="Project Details"
+                            class="w-full p-3 bg-white border border-gray-300 mb-4 focus:outline-none focus:border-red-600 transition"></textarea>
+                        <button
+                            class="w-full bg-black text-white font-bold py-4 hover:bg-red-600 transition duration-300 uppercase tracking-wider">
+                            Submit Request
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-12 border-t border-neutral-900">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-6 md:mb-0 text-center md:text-left">
+                <h5 class="text-xl font-bold mb-2">International Business Experts <span class="text-red-600">LLC</span>
+                </h5>
+                <p class="text-gray-500 text-sm">&copy; 2025 All Rights Reserved.</p>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- Floating Contact Button -->
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col-reverse items-end space-y-reverse space-y-4">
+        <!-- Main Button -->
+        <button id="contactToggle"
+            class="w-14 h-14 bg-black text-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-800 transition duration-300 focus:outline-none">
+            <i class="fas fa-comment-dots text-2xl"></i>
+        </button>
+
+        <!-- Menu Items (Hidden by default) -->
+        <div id="contactMenu"
+            class="hidden flex flex-col items-end space-y-3 transition-all duration-300 origin-bottom transform translate-y-4 opacity-0">
+            <!-- WhatsApp -->
+            <a href="https://wa.me/96877093791" target="_blank"
+                class="flex items-center space-x-2 bg-black text-white px-4 py-2 rounded-full shadow-md hover:bg-gray-800 transition">
+                <span class="text-sm font-medium">WhatsApp</span>
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <!-- Email -->
+            <a href="mailto:mohamed.mahmoud@interbsnsexpert.om"
+                class="flex items-center space-x-2 bg-black text-white px-4 py-2 rounded-full shadow-md hover:bg-gray-800 transition">
+                <span class="text-sm font-medium">Email</span>
+                <i class="fas fa-envelope"></i>
+            </a>
+            <!-- Call -->
+            <a href="tel:+96877093791"
+                onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'});"
+                class="flex items-center space-x-2 bg-black text-white px-4 py-2 rounded-full shadow-md hover:bg-gray-800 transition">
+                <span class="text-sm font-medium">Call</span>
+                <i class="fas fa-phone"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Animation Script -->
+    <script>
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal, .reveal-group').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // Floating Button Logic
+        const toggleBtn = document.getElementById('contactToggle');
+        const menu = document.getElementById('contactMenu');
+
+        toggleBtn.addEventListener('click', () => {
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                // Small delay to allow display change to register before animating
+                setTimeout(() => {
+                    menu.classList.remove('translate-y-4', 'opacity-0');
+                }, 10);
+                toggleBtn.innerHTML = '<i class="fas fa-times text-2xl"></i>';
+            } else {
+                menu.classList.add('translate-y-4', 'opacity-0');
+                toggleBtn.innerHTML = '<i class="fas fa-comment-dots text-2xl"></i>';
+                // Wait for transition to finish before hiding
+                setTimeout(() => {
+                    menu.classList.add('hidden');
+                }, 300);
+            }
+        });
+    </script>
+
+
+</body>
+
+</html>
